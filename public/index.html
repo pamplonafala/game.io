@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Real time multi-player games with HTML5</title>
+		<link rel="stylesheet" type="text/css" href="public/css/style.css"/>
+	</head>
+
+	<body>
+		<canvas id="viewport"> </canvas>	
+	</body>
+	
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="public/js/jquery.js"></script>
+	<script src="public/js/js.js"></script>
+
+	<!-- Load the GUI rendering library code. -->
+	<script type="text/javascript" src="lib/dat.gui.min.js"></script>
+	<!-- Load the keyboard specific code --> 
+	<script type="text/javascript" src="lib/keyboard.js"></script>
+
+	<!-- Load the common game code. -->
+	<script type="text/javascript" src="game.core.js"></script>
+	<!-- Finally, Load the game client code. -->
+	<script type="text/javascript" src="client.js"></script>		
+
+	<script>
+		var socket = io.connect('/');
+		socket.on('onConnected', function(data) {
+			console.log( 'Connected successfully to the socket.io server. My server side ID is ' + data.id );
+		});
+	</script>
+</html>
